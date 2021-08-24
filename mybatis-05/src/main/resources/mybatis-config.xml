@@ -7,10 +7,16 @@
 
     </properties>
 
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+<!--        <setting name="logImpl" value="LOG4J"/>-->
+    </settings>
+
     <typeAliases>
-<!--        <typeAlias type="com.lhs.pojo.User" alias="user"></typeAlias>-->
+        <!--        <typeAlias type="com.User" alias="user"></typeAlias>-->
         <package name="com.lhs.pojo"/>
     </typeAliases>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
@@ -22,9 +28,8 @@
             </dataSource>
         </environment>
     </environments>
+
     <mappers>
-        <mapper resource="com/lhs/mapper/UserMapper.xml"/>
-<!--        <mapper class="com.lhs.mapper.UserMapper"></mapper>-->
-<!--        <package name="com.lhs.mapper"/>-->
+        <mapper class="com.lhs.mapper.UserMapper"></mapper>
     </mappers>
 </configuration>
