@@ -11,9 +11,16 @@ import org.junit.Test;
 
 public class TeacherMapperTest {
     @Test
-    public void testGetTeacherById(){
+    public void testGetTeacher(){
         SqlSession sqlSessionAutoCommit = MybatisUtils.getSqlSessionAutoCommit();
         TeacherMapper mapper = sqlSessionAutoCommit.getMapper(TeacherMapper.class);
-        System.out.println(mapper.getTeacherById(1));
+        System.out.println(mapper.getTeacher(1));
+    }
+
+    @Test
+    public void testGetTeacher2(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
+        System.out.println(mapper.getTeacher2(1));
     }
 }
