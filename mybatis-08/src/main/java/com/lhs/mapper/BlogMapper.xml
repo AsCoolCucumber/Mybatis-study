@@ -12,15 +12,19 @@
         insert into blog values (#{id},#{title},#{author},#{createTime},#{views})
     </insert>
 
+    <sql id="titleAuthorIf">
+        <if test="title != null">
+            title = #{title}
+        </if>
+        <if test="author != null">
+            and author = #{author}
+        </if>
+    </sql>
+    
     <select id="queryBlogIf" parameterType="map" resultType="Blog">
         select * from blog
         <where>
-            <if test="title != null">
-                title = #{title}
-            </if>
-            <if test="author != null">
-                and author = #{author}
-            </if>
+            <include refid="titleAuthorIf"></include>
         </where>
     </select>
 
@@ -53,4 +57,22 @@
         </set>
         where id = #{id}
     </update>
+
+    <select id="queryBlogForeach" parameterType="list" resultType="Blog">
+        select * from blog
+        <where>
+            <foreach collection="list" item="id" open="(" close=")" separator=" or ">
+                id = #{id}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="queryBlogForeach2" parameterType="map" resultType="Blog">
+        select * from blog
+        <where>
+            <foreach collection="ids" item="id" open="(" close=")" separator=" or ">
+                id = #{id}
+            </foreach>
+        </where>
+    </select>
 </mapper>

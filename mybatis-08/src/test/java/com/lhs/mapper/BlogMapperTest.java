@@ -11,6 +11,7 @@ import com.lhs.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -81,8 +82,34 @@ public class BlogMapperTest {
         sqlSessionAutoCommit.close();
     }
 
+    @Test
+    public void testQueryBlogForeach(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        ArrayList<String> ids = new ArrayList<>();
+        ids.add("b5704f7e95204a5ebd5b77410a3a8a55");
+        ids.add("6496e4729ed84b07873d3e0a4b2c4ae0");
+        List<Blog> blogs = mapper.queryBlogForeach(ids);
+        for (Blog blog : blogs) {
+            System.out.println(blog);
+        }
+        sqlSession.close();
+    }
 
-
-
+    @Test
+    public void testQueryBlogForeach2(){
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        HashMap map = new HashMap();
+        ArrayList<String> list = new ArrayList<>();
+        list.add("b5704f7e95204a5ebd5b77410a3a8a55");
+        list.add("6496e4729ed84b07873d3e0a4b2c4ae0");
+        map.put("ids", list);
+        List<Blog> blogs = mapper.queryBlogForeach2(map);
+        for (Blog blog : blogs) {
+            System.out.println(blog);
+        }
+        sqlSession.close();
+    }
 
 }
