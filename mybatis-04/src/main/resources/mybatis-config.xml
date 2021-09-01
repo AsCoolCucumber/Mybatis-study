@@ -31,6 +31,6 @@
     <mappers>
         <mapper resource="com/lhs/mapper/UserMapper.xml"/>
         <!--        <mapper class="com.UserMapper"></mapper>-->
-        <!--        <package name="com.lhs.mapper"/>-->
+        <!--        <package name="com.lhs.dao"/>-->
     </mappers>
 </configuration>

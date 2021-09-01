@@ -32,6 +32,6 @@
     </environments>
 
     <mappers>
-        <mapper class="com.lhs.mapper.UserMapper"></mapper>
+        <mapper class="com.lhs.dao.UserMapper"></mapper>
     </mappers>
 </configuration>

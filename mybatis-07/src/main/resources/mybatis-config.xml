@@ -30,7 +30,7 @@
     </environments>
 
     <mappers>
-        <mapper class="com.lhs.mapper.TeacherMapper"></mapper>
-        <mapper class="com.lhs.mapper.StudentMapper"></mapper>
+        <mapper class="com.lhs.dao.TeacherMapper"></mapper>
+        <mapper class="com.lhs.dao.StudentMapper"></mapper>
     </mappers>
 </configuration>
